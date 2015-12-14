@@ -5,7 +5,7 @@
   <h1>This Is My Final Sketch Called Millennium Falcon: Counter Attack</h1>
   <script type="text/processing" data-processing-target="mycanvas-final">
   
-  PImage fal;
+PImage fal;
 PImage fight;
 PImage darth;
 
@@ -27,9 +27,9 @@ boolean mState = false;
 
 void setup(){
   size(1300,800);
-  fal = loadImage("https://cloud.githubusercontent.com/assets/16195622/11784670/420d2ce4-a243-11e5-96ca-a04880d050a9.png");
-  fight = loadImage("https://cloud.githubusercontent.com/assets/16195622/11784681/4ca715a2-a243-11e5-8748-4fdbce3add29.jpg");
-  darth = loadImage("https://cloud.githubusercontent.com/assets/16195622/11784676/49b17978-a243-11e5-8bfc-5d9e87b7dcef.jpg");
+  fal = loadImage("millennium-falconSideView2.png");
+  fight = loadImage("SWGameStartBKGRD.jpg");
+  darth = loadImage("DarthBkGrd.jpg");
  
   myMillFalcon = new MillFalcon();
   
@@ -148,6 +148,7 @@ void keyPressed(){
 void keyReleased(){
   myMillFalcon.keyReleased(); // the global keyReleased function calls the Movement class keyReleased method.
 }
+
 class MillFalcon{
   int centerX,centerY,offset1,offset2,offsetX1,offsetX2,beamX,beamY,beamSpeed;
   boolean keys[];    // In this array, the index corresponds with W,S,A,D.
@@ -173,14 +174,14 @@ class MillFalcon{
   }
   
   // creates the Millenium Falcon.
-  void display(){  
+  void display(){   
     rectMode(CENTER);
     image(fal,centerX,centerY);  
   }
   
   
   //Collision of tie fighter into Falcon
-  boolean intersect(TieFighter d){
+    boolean intersect(TieFighter d){
       println(dist(centerX, centerY, d.tieX, d.tieY));
     if(dist(centerX, centerY, d.tieX, d.tieY) <200){
       println("centerX: " + centerX + ", centerY: " + centerY + ", tieX: " + d.tieX + ", tieY: " + d.tieY);
@@ -225,7 +226,7 @@ class MillFalcon{
     centerY += yVelocity;
   }
   
-  
+ 
   void keyPressed(){
     if(key == 'w'){
       keys[0] = true;
@@ -257,6 +258,7 @@ class MillFalcon{
     } 
   }   
 }
+
 class TieFighter{
   int tieX,tieY,tieSpeedX,tieSpeedY;
   
@@ -302,8 +304,19 @@ void move(){
   tieX = tieX + tieSpeedX;
   tieY = tieY + tieSpeedY;
   
-//timer for game. Randomly drops tie fighters into game
-class Timer{
+  if ((tieX > width) || (tieX < 0)){
+    tieSpeedX = tieSpeedX * -1;
+  }
+ if ((tieY > height ) || (tieY < 0)){
+    tieSpeedY = tieSpeedY * -1;
+ }
+ }
+ 
+ 
+  
+}
+
+class Timer{ //timer for game. Randomly drops tie fighters into game
   float startTime, stopTime; 
    boolean started = false;   
   
@@ -324,7 +337,7 @@ class Timer{
   }
   
   
-boolean isFinished(){
+  boolean isFinished(){
     float passedTime = millis() - startTime;
     if((passedTime > stopTime) && (started)) {
       return true;
