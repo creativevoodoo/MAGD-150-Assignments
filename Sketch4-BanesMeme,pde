@@ -1,0 +1,219 @@
+int deathstarX = 0;
+int deathstarY = 205;
+int speed = 1;
+float eyeR;
+float eyeG;
+float eyeB;
+int pressed = 0;
+int pressedState = 0;
+int saberA;
+
+void setup(){
+  size(1300,820);
+  frameRate(30);
+  
+}
+void draw(){
+  background(23,30,52);
+  
+  //DeathStar
+  deathstarX = deathstarX + speed;
+  
+  if ((deathstarX > width) || (deathstarX < 0)){
+    speed = speed * -1;
+  }
+  fill(200);
+  strokeWeight(6);
+  stroke(0,0,0);
+  ellipse(deathstarX,deathstarY,200,200);
+  fill(150);
+  ellipse(deathstarX+40,deathstarY-50,40,50);
+  fill(100);
+  ellipse(deathstarX+35,deathstarY-50,15,20);
+  line(deathstarX-100,deathstarY,deathstarX+100,deathstarY);
+  
+  //Landscape
+  fill(31,26,25);
+  beginShape();
+  vertex(0,600);
+  vertex(100,600);
+  vertex(100,700); 
+  vertex(200,550);
+  vertex(300,700);
+  vertex(500,700);
+  vertex(700,420);
+  vertex(700,600);
+  vertex(900,600);
+  vertex(900,700);
+  vertex(1300,700);
+  vertex(1300,820);
+  vertex(0,820);
+  endShape(CLOSE);
+  
+  //Bane's Jacket collar
+  fill(198,185,150);
+  beginShape();
+  vertex(20,400);
+  vertex(180,350);
+  vertex(520,350);
+  vertex(680,400);
+  vertex(540,720);
+  vertex(160,720);
+  endShape(CLOSE);
+  
+  //Bane's Neck
+  fill(255,238,222);
+  strokeWeight(6);
+  stroke(0,0,0);
+  quad(250,375,450,375,525,820,175,820);
+  
+  //Bane's Jacket
+  fill(49,33,22);
+  beginShape();
+  vertex(190,660);
+  vertex(0,700);
+  vertex(0,820);
+  vertex(760,820);
+  vertex(740,700);
+  vertex(510,660);
+  vertex(480,740);
+  vertex(220,740);
+  endShape(CLOSE);
+  
+  //Neck Shadow
+  fill(0,0,0,100);
+  noStroke();
+  quad(250,375,450,375,505,700,190,700);
+  
+  //Bane's ears
+  //fill(255,238,222);
+  //strokeWeight(6);
+  //stroke(0,0,0);
+  //ellipse(200,370,100,150);
+  //ellipse(500,370,100,150);
+  
+  //Bane's side mask
+  fill(30);
+  strokeWeight(6);
+  stroke(0,0,0);
+  rect(180,290,340,370,40,40,160,160);
+  
+  //Bane's Head
+  fill(255,238,222);
+  strokeWeight(6);
+  stroke(0,0,0);
+  rect(200,100,300,375,160);
+
+  //Bane's Eybrows
+  fill(129,90,64);
+  triangle(320,310,330,295,230,270);
+  triangle(380,310,370,295,470,270);
+  
+  //Bane's Eyes
+  fill(255,238,222);
+  ellipse(280,340,80,60);
+  ellipse(420,340,80,60);
+  fill(255,255,255);
+  ellipse(280,340,70,40);
+  ellipse(420,340,70,40);
+  eyeR = random(255);
+  eyeG = random(255);
+  eyeB = random(255);
+  fill(eyeR,eyeG,eyeB);
+  ellipse(280,340,30,30);
+  ellipse(420,340,30,30);
+  fill(0,0,0);
+  ellipse(280,340,10,10);
+  ellipse(420,340,10,10);
+  
+  //Bane's Mask
+  fill(30);
+  triangle(350,640,300,90,400,90);
+  beginShape();
+  vertex(300,380);
+  vertex(400,380);
+  vertex(460,450);
+  vertex(460,600);
+  vertex(400,640);
+  vertex(300,640);
+  vertex(240,600);
+  vertex(240,450);
+  endShape(CLOSE);
+  
+  //Grey Hoses on mask
+  fill(150);
+  rect(290,410,20,80,20);
+  rect(320,410,20,80,20);
+  rect(360,410,20,80,20);
+  rect(390,410,20,80,20);
+  rect(290,520,20,80,20);
+  rect(320,520,20,80,20);
+  rect(360,520,20,80,20);
+  rect(390,520,20,80,20);
+  
+  //Banes Hand
+  fill(255,238,222);
+  strokeWeight(6);
+  stroke(0,0,0);
+  ellipse(930,700,200,200);
+  
+  //Bane's LightSaber
+  fill(0,0,0);
+  rect(900,350,60,200,10,10,0,0);
+  fill(30);
+  rect(890,360,80,10,10);
+  rect(890,380,80,10,10);
+  rect(890,400,80,10,10);
+  rect(890,420,80,10,10);
+  rect(890,440,80,10,10);
+  rect(890,460,80,10,10);
+  rect(890,480,80,10,10);
+  rect(890,500,80,10,10);
+  rect(890,520,80,10,10);
+  
+  fill(150);
+  rect(890,550,80,250,10);
+  rect(910,580,40,60,10);
+  if (pressedState == 1){
+    saberA = 240;
+  } else{
+    saberA = 0;
+  }
+  noStroke();
+  fill(0,255,44,saberA);
+  rect(910,0,40,345);
+  
+  fill(150);
+  stroke(0);
+  strokeWeight(6);
+  quad(900,350,960,350,970,320,890,320);
+  
+  
+  //Banes Fingers
+  fill(255,238,222);
+  strokeWeight(6);
+  stroke(0,0,0);
+  rect(960,550,80,50,70);
+  rect(960,600,80,50,70);
+  rect(960,650,80,50,70);
+  rect(960,700,80,50,70);
+  rect(850,550,50,80,70);
+  
+  
+  //Meme Text
+  textSize(58);
+  fill(0,0,0,200);
+  text("You merely adopted the Star Wars",64,84);
+  text("I was born in it, moulded by it. I didn't ",64,714);
+  text("see the Prequels until I was already a man.",64,784);
+  fill(255);
+  text("You merely adopted the Star Wars",60,80);
+  text("I was born in it, moulded by it. I didn't ",60,710);
+  text("see the Prequels until I was already a man.",60,780);
+
+}
+
+void mousePressed() {
+  pressed = pressed +1;
+  pressedState = (pressed % 2);
+}
