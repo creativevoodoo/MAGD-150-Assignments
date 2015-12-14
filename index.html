@@ -172,7 +172,8 @@ class MillFalcon{
     keys = new boolean [4];
   }
   
-  void display(){  // creates a spaceship. 
+  // creates the Millenium Falcon.
+  void display(){  
     rectMode(CENTER);
     image(fal,centerX,centerY);  
   }
@@ -181,7 +182,7 @@ class MillFalcon{
   //Collision of tie fighter into Falcon
     boolean intersect(TieFighter d){
       println(dist(centerX, centerY, d.tieX, d.tieY));
-    if(dist(centerX, centerY, d.tieX, d.tieY) <150){
+    if(dist(centerX, centerY, d.tieX, d.tieY) <200){
       println("centerX: " + centerX + ", centerY: " + centerY + ", tieX: " + d.tieX + ", tieY: " + d.tieY);
       return true;
     } else{
