@@ -183,7 +183,7 @@ class MillFalcon{
   //Collision of tie fighter into Falcon
     boolean intersect(TieFighter d){
       println(dist(centerX, centerY, d.tieX, d.tieY));
-    if(dist(centerX, centerY, d.tieX, d.tieY) <200){
+    if(dist(centerX, centerY, d.tieX, d.tieY) <150){
       println("centerX: " + centerX + ", centerY: " + centerY + ", tieX: " + d.tieX + ", tieY: " + d.tieY);
       return true;
     } else{
