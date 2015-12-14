@@ -178,7 +178,7 @@ class MillFalcon{
   }
   
   
-  
+  //Collision of tie fighter into Falcon
     boolean intersect(TieFighter d){
       println(dist(centerX, centerY, d.tieX, d.tieY));
     if(dist(centerX, centerY, d.tieX, d.tieY) <150){
@@ -222,17 +222,6 @@ class MillFalcon{
     }
     centerX += xVelocity;
     centerY += yVelocity;
-  }
-  
-  void laser(){
-    
-    beamX= beamX + beamSpeed;
-    //if (mState == false){
-    fill(255,9,0);
-    
-    rect(beamX,beamY,60,10);
-  //}
-    
   }
   
   
