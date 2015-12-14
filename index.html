@@ -180,7 +180,7 @@ class MillFalcon{
   
   
   //Collision of tie fighter into Falcon
-    boolean intersect(TieFighter d){
+  boolean intersect(TieFighter d){
       println(dist(centerX, centerY, d.tieX, d.tieY));
     if(dist(centerX, centerY, d.tieX, d.tieY) <200){
       println("centerX: " + centerX + ", centerY: " + centerY + ", tieX: " + d.tieX + ", tieY: " + d.tieY);
@@ -302,7 +302,8 @@ void move(){
   tieX = tieX + tieSpeedX;
   tieY = tieY + tieSpeedY;
   
-  class Timer{
+//timer for game. Randomly drops tie fighters into game
+class Timer{
   float startTime, stopTime; 
    boolean started = false;   
   
@@ -323,7 +324,7 @@ void move(){
   }
   
   
-  boolean isFinished(){
+boolean isFinished(){
     float passedTime = millis() - startTime;
     if((passedTime > stopTime) && (started)) {
       return true;
